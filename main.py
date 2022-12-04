@@ -6,33 +6,26 @@ instance = BPP_Instance(e_n = 9,
                         e_vol = (2,1,2,1,1,2,3,2,1),
                         c = 4)
 
+print(f"--- BPP INSTANCE ---\n{instance}")
+
 if not instance.unfeasible():
 
-    obj_lower_bound, obj_upper_bound = instance.obj_bounds()
+    print("The instance is feasible.\n")
 
-    print(f"{obj_lower_bound} <= obj <= {obj_upper_bound}")
+    obj_lower_bound, obj_upper_bound = instance.obj_bounds()
+    print(f"A trivial objective bounding: {obj_lower_bound} <= obj <= {obj_upper_bound}\n")
+
+    x = BPP_Solution(instance)
+    #print(x)
+    x.greedy_ff()
+    print(f"After FF solution construction:\n\n{x}")
     
     x = BPP_Solution(instance)
-
-    if x.feasible():
-        print('feasible solution, obj = ', x.obj())
-    else:
-        print('unfeasible solution')
-
-    print('placements: ', x.e_pos)
-    print('residual capacities: ', x.c_residual)
-    print()
-
-    x.greedy_ff()
-
-    if x.feasible():
-        print('feasible solution, obj = ', x.obj())
-    else:
-        print('unfeasible solution')
-
-    print('placements: ', x.e_pos)
-    print('residual capacities: ', x.c_residual)
-    print()
+    #print(x)
+    x.greedy_ffd()
+    print(f"After FFD solution construction:\n\n{x}")
+else:
+    print("The instance is unfeasible.\n")
 
     
 
