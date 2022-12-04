@@ -42,8 +42,18 @@ class BPP_Solution:
         return len(self.c_residual)
 
     # builds a solution using First Fit constructive heuristic
-    def greedy_ff():
-        pass
+    def greedy_ff(self):
+        for i in range(self.p.e_n):
+            for j, r in enumerate(self.c_residual):
+                # object fits in j-th container
+                if r >= self.p.e_vol[i]:
+                    self.e_pos[i] = j
+                    self.c_residual[j] -= self.p.e_vol[i]
+                    break
+            else:
+                self.e_pos[i] = len(self.c_residual)
+                self.c_residual += [self.p.c - self.p.e_vol[i]]
+
 
     # builds a solution using First Fit Decreasing constructive heuristic
     def greedy_ffd():

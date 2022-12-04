@@ -8,16 +8,35 @@ instance = BPP_Instance(e_n = 9,
 
 if not instance.unfeasible():
 
-    print(instance.obj_bounds())
-    
-    x = BPP_Solution(instance = instance)
+    obj_lower_bound, obj_upper_bound = instance.obj_bounds()
 
-    print(x.consistent())
-    print(x.feasible())
-    print(x.obj())
+    print(f"{obj_lower_bound} <= obj <= {obj_upper_bound}")
+    
+    x = BPP_Solution(instance)
+
+    if x.feasible():
+        print('feasible solution, obj = ', x.obj())
+    else:
+        print('unfeasible solution')
+
+    print('placements: ', x.e_pos)
+    print('residual capacities: ', x.c_residual)
+    print()
+
+    x.greedy_ff()
+
+    if x.feasible():
+        print('feasible solution, obj = ', x.obj())
+    else:
+        print('unfeasible solution')
+
+    print('placements: ', x.e_pos)
+    print('residual capacities: ', x.c_residual)
+    print()
+
+    
 
 # TODO
-# - finish basic scheme implementation
 # - build BPP_instances from instance files
 # - find a dataset of instances
 # - use np.arrays instead of built-in ones
