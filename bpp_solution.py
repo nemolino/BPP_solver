@@ -47,7 +47,7 @@ class BPP_Solution:
 
     # builds a feasible solution using First Fit (constructive heuristic),
     # starting from the current solution state. 
-    # asserts if all objects are  already placed in a container
+    # asserts if all objects are already placed in a container
     def greedy_ff(self, iter_indexes = None):
 
         assert not self.feasible()
@@ -75,7 +75,7 @@ class BPP_Solution:
 
     # builds a feasible solution using First Fit Decreasing (constructive heuristic),
     # starting from the current solution state. 
-    # asserts if all objects are  already placed in a container
+    # asserts if all objects are already placed in a container
     def greedy_ffd(self):
 
         assert not self.feasible()

@@ -11,6 +11,13 @@ class BPP_Instance:
         self.c = c                           
 
 
+    # builds a random feasible problem instance
+    @classmethod
+    def random_volumes_instance(cls, e_n, c):
+        import random
+        return cls(e_n, tuple(random.randint(0, c) for _ in range(e_n)), c)
+
+
     # returns True if the instance is unfeasible, False otherwise
     def unfeasible(self):
         return max(self.e_vol) > self.c

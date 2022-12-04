@@ -1,10 +1,12 @@
 from bpp_instance import BPP_Instance
 from bpp_solution import BPP_Solution
 
+# instance = BPP_Instance(e_n = 9, 
+#                         e_vol = (2,1,2,1,1,2,3,2,1),
+#                         c = 4)
 
-instance = BPP_Instance(e_n = 9, 
-                        e_vol = (2,1,2,1,1,2,3,2,1),
-                        c = 4)
+instance = BPP_Instance.random_volumes_instance(e_n = 250, 
+                                                c = 150)
 
 print(f"--- BPP INSTANCE ---\n{instance}")
 
